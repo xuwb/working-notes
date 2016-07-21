@@ -1,0 +1,27 @@
+
+
+
+
+<SearchList>
+	<Table data=".json">
+	<Pager store="">
+</SearchList>
+
+
+state:{
+	data: 
+	
+}
+
+
+<SearchList template="temp路径" showPager="true" dataSource=".json" store={}} />
+
+
+var temp = this.props.template;
+var Row = require(temp)
+<SearchList>
+	{data.map((val)=>{
+		return <Row data={val} />
+	})}
+	<Pager pageSize="" initPage="">
+</SearchList>
