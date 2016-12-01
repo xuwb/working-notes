@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>react-es6</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/src/build/jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="/src/build/sea.js"></script>
+    <script type="text/javascript" src="/src/sea-config.js"></script>
+    <link rel="stylesheet" type="text/css" href="/src/bootstrap/css/bootstrap.css">
+    <style type="text/css">
+        table { margin: auto; border: solid #999 1px; }
+        td,th { margin-left: -1px; margin-bottom: -1px; padding: 4px; border: solid #999 1px; }
+        button { margin: 0 2px; }
+        .text-center { text-align: center; }
+        .btn { font-size: 12px; }
+        .input { padding: 4px; text-align: right; }
+        .addBtn { padding: 4px; }
+    </style>
+</head>
+<body>
+<!--     <input type="text" name="" class="required" />
+    <button>确定</button> -->
+    <div id="main"></div>
+    <script type="text/javascript">
+        // $('button').on('click', function(){
+        //     $('.required').val('aaa');
+        //     $(".required").trigger("input");
+        // })
+        // $('.required').on('input', function() {
+        //     console.log(11);
+        // })
+        seajs.use('./jsx/main');
+    </script>
+</body>
+</html>

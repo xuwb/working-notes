@@ -1,0 +1,9 @@
+{
+	"content":{
+		"isSuccess":true,
+		"retValue":{
+			"aaa": "bbb"
+		}
+	},
+	"hasError":false
+}
