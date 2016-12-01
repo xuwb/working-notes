@@ -19,7 +19,7 @@ define(function (require, exports, module) {
         mixins: [Reflux.connect(ConnectStore)], // 测试connect用，与项目无关
 
         getInitialState: function getInitialState() {
-            this.props.outerFunc.call(this);
+            // this.props.outerFunc.call(this);
             return {
                 infoBtnType: 'add',
                 infoStyle: {
@@ -121,12 +121,10 @@ define(function (require, exports, module) {
             );
         },
         componentDidMount: function componentDidMount() {
-            var me = this,
-                prop = me.prop;
-            prop.init.call(me);
+            this.props.init.call(this);
         },
         componentWillUnmount: function componentWillUnmount() {
-            prop.destroy.call(me);
+            this.props.destroy.call(this);
         }
     });
     return Container;

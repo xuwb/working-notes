@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>handlebars测试</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="handlebars-v3.0.1.js"></script>
+    <script type="text/javascript" src="jquery-1.11.2.js"></script>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script id="entry-template" type="text/x-handlebars-template">
+        {{link story}}
+        <br>
+        {{#author}}
+            {{{../author}}}
+        {{/author}}
+        <br>
+        {{#if author}}
+            {{{author}}}
+        {{/if}}
+        <ul>
+        {{#each books}}
+            <li>{{this.name}}</li>
+        {{/each}}
+        {{#each [111, 222, 333]}}
+            <li>{{this}}</li>
+        {{/each}}
+        </ul>
+        {{#each people}}
+            {{#list people}}
+                {{firstName}}
+            {{/list}}
+        {{/each}}
+        
+    </script>
+    <script type="text/javascript">
+        Handlebars.registerHelper('link', function(object) {
+          var url = Handlebars.escapeExpression(object.url),
+              text = Handlebars.escapeExpression(object.text);
+              // text = object.text;
+
+          return new Handlebars.SafeString(
+            "<a href='" + url + "'>" + text + "</a>"
+          );
+        });
+        Handlebars.registerHelper('list', function(items, options) {
+            console.log(items);
+            console.log(this);
+            console.log(options);
+            // var out = "<ul>";
+            // for(var i=0, l=items.length; i<l; i++) {
+            //     out = out + "<li>" + options.fn(items[i]) + "</li>";
+            // }
+            // return out + "</ul>";
+        });
+        var story = {
+                        story: {
+                            url: "http://handlebarsjs.org/demo/SafeString-escapeExpression.html",
+                            text: "字符转义和数据安全性 <span onclick='javascript:alert(1);'>点击我</span>"
+                        },
+                        author: '<span style="color: green;">作者</span>',
+                        books: [{name: '安徒生'}, 
+                                {name: '格林'}, 
+                                {name: '海底两万里'}],
+                        people: [
+                            {firstName: "Yehuda", lastName: "Katz"},
+                            {firstName: "Carl", lastName: "Lerche"},
+                            {firstName: "Alan", lastName: "Johnson"}
+                        ]
+                    };
+
+        var source   = $("#entry-template").html();
+        var template = Handlebars.compile(source);
+        var html    = template(story);
+
+        $('#content').html(html);
+    </script>
+</body>
+</html>

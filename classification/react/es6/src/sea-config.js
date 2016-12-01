@@ -16,10 +16,10 @@
             'crystal' : cdnHost + '/crystal'
         },
         alias: {
-            'jquery'   : 'build/jquery-1.11.2',
-            'react'    : 'build/react-15.2.1/build/react',
-            'reactDom' : 'build/react-15.2.1/build/react-dom',
-            'reflux'   : 'build/reflux.min',
+            'jquery'   : 'lib/jquery-1.11.2',
+            'react'    : 'lib/react-15.2.1/build/react',
+            'reactDom' : 'lib/react-15.2.1/build/react-dom',
+            'reflux'   : 'lib/reflux.min',
 
             '$'        : 'common/jQuery',
             //Base
@@ -46,8 +46,7 @@
             "transfer": "alinw/transfer/1.0.0/transfer",
 
             'util'     : 'common/util',
-            'demo1'    : 'demo1/jsx/main',
-            'demo2'    : 'demo2/jsx/main'
+            'demo2'    : 'demo/hoc/jsx/main'
         },
         debug: true,
         charset: 'utf-8'

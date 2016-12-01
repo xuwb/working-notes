@@ -1,0 +1,2 @@
+webpackJsonp([5,10],{0:function(n,t,o){n.exports=o(50)},10:function(n,t){n.exports="A和B都引用C，同时A引用B。\t打包时，A文件只会添加一次C文件内容，后面调用B时，只是调用对C输出内容的引用。\t但是在两个html页面分别调用A和B时，C的内容相当于在每个页面都加载了一遍，增加了下载的资源。 \n \t解决办法：1、将通用资源放到到页面 <script> 中，通过config文件中的 externals: { } 加载 \n"},50:function(n,t,o){var e=o(10),r="Hello World！\n";n.exports=r+e}});
+//# sourceMappingURL=testExports_B.js.map

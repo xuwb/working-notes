@@ -1,0 +1,1 @@
+exports.src = require('images/33.png');

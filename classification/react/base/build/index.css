@@ -1,0 +1,78 @@
+body {
+    font-size: 12px;
+}
+.container {
+    position: relative;
+    width: 480px;
+    margin: auto;
+}
+.col-top {
+    margin: 20px 0;
+    text-align: center;
+}
+.col-title {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+}
+.btn {
+    display: inline-block;
+    margin: 5px;
+    padding: 4px 8px;
+    color: #333;
+    text-decoration: none;
+    vertical-align: middle;
+    background: #eee;
+}
+.btn-add {
+    margin-left: 10px;
+}
+.btn:hover {
+    color: #fff;
+    background: #999;
+}
+.col-info {
+    position: relative;
+    display: none;
+    margin-bottom: 20px;
+    border: solid 1px #e7e7e7;
+}
+.col-info ul {
+    margin: 0;
+    padding: 10px;
+    list-style: none;
+    width: 280px;
+    border-right: solid #e7e7e7 1px;
+}
+.col-info li {
+    margin: 4px 0;
+}
+.col-info span {
+    margin-right: 10px;
+}
+.col-info .col-btn {
+    position: absolute;
+    left: 300px;
+    position: absolute;
+    top: 50%;
+    width: 180px;
+    transform: translateY(-50%);
+    text-align: center;
+}
+.col-info input {
+    width: 220px;
+}
+.btn-ok, .btn-cancel {
+
+    
+}
+.col-table {
+    text-align: center;
+}
+.col-table thead{
+    background: #ccc;
+}
+.col-table td {
+    padding: 4px;
+}
+

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>react增删改</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="build/index.css">
+		<script src="build/react.js"></script>
+	    <script src="build/react-dom.js"></script>
+	    <script src="build/browser.min.js"></script>
+	    <script src="build/jquery.min.js"></script>
+		</head>
+	<body>
+		<div id="main"></div>
+		<script type="text/babel">
+			var initData;
+			var articalId = 0;
+			
+			// 修改删除按钮
+			var CrudBtn = React.createClass({
+				getInitialState: function(){
+					return {}
+				},
+				clickHandler: function(e){
+					e.preventDefault();
+					e.stopPropagation();
+					
+					switch(this.props.btnName){
+						case '修改':
+							console.log('update');
+							this.props.callbackParent(this.props.data);
+							break;
+						case '删除':
+							if(confirm("是否删除" + this.props.data.title + "？")){
+								console.log(initData);
+								this.props.callbackParent(this.props.data);
+							}
+							break;
+					}
+				},
+				render: function(){
+					return(
+						<a href={"#"} onClick={this.clickHandler}>{this.props.btnName}</a>
+					)
+				}
+			});
+			// 表格行
+			var DataRow = React.createClass({
+				render: function(){
+					return (
+						<tr data-id={this.props.dataId}>
+							{
+								React.Children.map(this.props.children, function(child){
+									return <td>{child}</td>
+								})
+							}
+						</tr>
+					)
+				}
+			});
+			// 添加修改信息
+			var InfoBox = React.createClass({
+				getInitialState: function() { 
+			        return {id:'', title: '', author: ''};
+		        }, 
+				okHandler: function(e){
+					e.preventDefault();
+					e.stopPropagation();
+					
+					var newInfo, showState;
+
+					if(!this.refs.title.value) {
+						newInfo = null;
+						showState = 'block';
+						alert('标题不能为空');
+					}
+					else {
+						var infoId = this.state.id;
+						if(!infoId) infoId = ++articalId;
+
+						newInfo = {
+							id: infoId,
+							title: this.refs.title.value,
+							author: this.refs.author.value ? this.refs.author.value : 'none',
+							description: 'none',
+							pubtime: new Date()
+						}
+						showState = 'none';
+					}
+					this.reset();
+				    this.props.callbackParent(showState, newInfo);
+				},
+				cancelHander: function(e){
+					e.preventDefault();
+					e.stopPropagation();
+
+					this.reset();
+					this.props.callbackParent('none');
+				},
+				changeHandler: function(e){
+					var obj = {};
+					obj[e.target.getAttribute('name')] = e.target.value;
+					this.setState(obj);
+				},
+				reset: function() {
+					this.setState({
+						id: '',
+						title: '',
+						author: ''
+					});
+				},
+				render: function(){
+					// 不能再渲染过程中（render，componentDidUpdate等）调用 this.setState，会导致死循环
+					return (
+						<form>
+							<ul>
+								<li>
+									<span>标题</span>
+									<span><input ref="title" name="title" type="text" value={this.state.title} onChange={this.changeHandler} /></span>
+								</li>
+								<li>
+									<span>作者</span>
+									<span><input ref="author" name="author" type="text" value={this.state.author} onChange={this.changeHandler} /></span>
+								</li>
+							</ul>
+							<div className="col-btn">
+								<a href="#" className="btn btn-ok" onClick={this.okHandler}>确定</a>
+								<a href="#" className="btn btn-cancel" onClick={this.cancelHander}>取消</a>
+							</div>
+						</form>
+					)
+				}
+			});
+			// 主体
+			var DataTable = React.createClass({
+				getInitialState: function(){
+					return {
+						elemTrs: null,
+						infoBtnType: 'add',
+						infoStyle: {
+							display: 'none'
+						}
+					}
+				},
+				addHandler: function(e){
+					e.preventDefault();
+					e.stopPropagation();
+					console.log('onClick add');
+
+					this.setState({
+						infoBtnType: 'add',
+						infoStyle: {
+							display: 'block'
+						}
+					})
+				},
+				onModifyClick: function(value){
+					console.log('modify-callback:' + value);
+
+					this.refs.infoBox.setState({
+						id: value.id,
+						title: value.title,
+						author: value.author
+					}),
+
+					this.setState({
+						infoBtnType: 'modify',
+						infoStyle: {
+							display: 'block'
+						}
+					})
+				},
+				onDeleteClick: function(value){
+					var list = this.state.elemTrs, index;
+
+					for(index in list){  
+					    if(list[index].key == value.id) break;
+					} 
+					list.splice(index, 1);
+					this.setState({
+						elemTrs: list
+					})
+				},
+				onInfoClick: function(show, value){
+					var list = this.state.elemTrs,
+						infoBtnType = this.state.infoBtnType;
+
+					if(value) {
+						if(infoBtnType == 'add') list.push(this.createRow(value));
+						if(infoBtnType == 'modify') {
+							var index;
+							for(index in list){  
+							    if(list[index].key == value.id) break;
+							} 
+							list.splice(index, 1, this.createRow(value));
+						}
+					}
+					this.setState({
+						elemTrs: list,
+						infoStyle: {
+							display: show
+						}
+					})
+				},
+				
+				onTableBtnClick: function(list){
+					list = list ? list : this.state.elemTrs;
+					self.setState({
+						elemTrs: list
+					})
+				},
+				render: function(){
+					var row = [];
+					return (
+						<div className="container">
+							<div className="col-top">
+								<h1 className="col-title">增删改DEMO</h1>
+								<a className="btn btn-add" href="#" onClick={this.addHandler}>添加</a>
+							</div>
+							<div className="col-info" style={this.state.infoStyle}>
+								<InfoBox ref="infoBox" callbackParent={this.onInfoClick} />
+							</div>
+							<table className="col-table" ref="tableList">
+								<thead>
+									<tr>
+										<td width="100">标题</td>
+									  	<td width="80">作者</td>
+									  	<td width="150">发布时间</td>
+									  	<td width="150">操作</td>
+									</tr>
+								</thead>
+								<tbody>{this.state.elemTrs}</tbody>
+							</table>
+						</div>
+					)
+				},
+				componentDidMount: function(){
+					var self = this;
+					$.ajax({
+						type: 'get',
+						url: this.props.source,
+						success: function(data){
+							initData = data;
+							var list = [];
+							data.forEach(function(value){
+
+								//list.push(<tr data-id={value.id}>
+								//			  <td>{value.title}</td>
+								//		  	  <td>{value.author}</td>
+								//		  	  <td>{value.pubtime}</td>
+								//		    </tr>);
+
+								// 通过组件方式调用
+								articalId = parseInt(value.id);
+								list.push(self.createRow(value));
+							})
+							self.setState({
+								elemTrs: list
+							})
+						}
+					})
+				},
+				createRow: function(value){
+					return (
+						<DataRow key={value.id} >
+							<span>{value.title}</span>
+						  	<span>{value.author}</span>
+						  	<span>{FormatDateTime(value.pubtime)}</span>
+						  	<span>
+							  	<CrudBtn btnName="修改" data={value} callbackParent={this.onModifyClick} />
+							  	&nbsp;
+							  	<CrudBtn btnName="删除" data={value} callbackParent={this.onDeleteClick} />
+						  	</span>
+						</DataRow>
+					)
+				}
+			});
+			var dataTable = ReactDOM.render(
+				<DataTable source="data.json" />,
+				document.getElementById('main')
+			);
+
+			function FormatDateTime (obj, showTime, IsMi) {   
+		        var myDate = new Date(obj);   
+		        var year = myDate.getFullYear();  
+		        var month = ("0" + (myDate.getMonth() + 1)).slice(-2);  
+		        var day = ("0" + myDate.getDate()).slice(-2);  
+		        var h = ("0" + myDate.getHours()).slice(-2);  
+		        var m = ("0" + myDate.getMinutes()).slice(-2);  
+		        var s = ("0" + myDate.getSeconds()).slice(-2);   
+		        var mi = ("00" + myDate.getMilliseconds()).slice(-3);  
+		        if(!showTime) {
+		        	return year + "-" + month + "-" + day;
+		        }
+		        if (IsMi) {   
+		            return year + "-" + month + "-" + day + " " + h + ":" + m + ":" + s;   
+		        }   
+		        else {   
+		            return year + "-" + month + "-" + day + " " + h + ":" + m + ":" + s + "." + mi;   
+		        }  
+		    }; 
+		</script>
+	</body>
+</html>
