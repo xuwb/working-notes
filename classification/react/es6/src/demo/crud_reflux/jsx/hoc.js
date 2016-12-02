@@ -47,7 +47,7 @@ define(function (require, exports, module) {
 
 
         $.extend(Hoc.prototype, Store);
-        console.log(Hoc.prototype);
+        // console.log(Hoc.prototype);
         return Hoc;
     };
 });

@@ -22,7 +22,7 @@ define((require, exports, module) => {
         }
         // 将Store的属性合并到Hoc.prototype。trigger方法才能生效
         $.extend(Hoc.prototype, Store);
-        console.log(Hoc.prototype);
+        // console.log(Hoc.prototype);
         return Hoc;
     }
 })
