@@ -3,9 +3,11 @@
 define(function (require, exports, module) {
 
     var Widget = require('Widget');
+
     var Carousel = Widget.extend({
         'className': 'Carousel',
         'attrs': {
+            element: '.scroll',
             // element: {
             //     setter: function(){
             //         return this.get('element') + '-setter';
@@ -17,14 +19,15 @@ define(function (require, exports, module) {
             preNavCls: '',
             triggerCls: ''
         },
+
         propsInAttrs: ['element', 'testAttrs'],
         initialize: function initialize(config) {
             Carousel.superclass.initialize.call(this, config);
-            console.log(this.element);
+            console.log(this.attrs);
+            // console.log(this.element)
         }
     });
     new Carousel({
-        element: 'body',
         panelCls: '.scroll'
     });
     return Carousel;

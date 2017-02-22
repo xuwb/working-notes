@@ -8,7 +8,6 @@ define(function(require, exports, module) {
   var Aspect = require('./aspect');
   var Attribute = require('./attribute');
 
-
   module.exports = Class.create({
     Implements: [Events, Aspect, Attribute],
 

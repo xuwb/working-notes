@@ -102,7 +102,7 @@ define(function(require, exports, module){
             }
         }
     }
-
+    module.exports = Events;
 
     // ==== Helper
     var keys = Object.keys;
