@@ -17,15 +17,15 @@ define(function(require, exports, module){
             preNavCls: '',
             triggerCls: ''
         },
-        
-        propsInAttrs: ['element', 'testAttrs'],
+        propsInAttrs: ['testAttrs'],
         initialize: function(config) {
             Carousel.superclass.initialize.call(this, config);
-            console.log(this.attrs);
-            // console.log(this.element)
+            // console.log(this.attrs);
+            console.log(this.element);
         }
     });
     new Carousel({
+        // template: '<div class="aaa"></div>',
         panelCls: '.scroll'
     });
     return Carousel;
