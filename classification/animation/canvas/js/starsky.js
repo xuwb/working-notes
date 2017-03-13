@@ -11,6 +11,7 @@ $(function(){
     function resizeCanvas() {  
         var w = $(window).get(0).innerWidth,
             h = $(window).get(0).innerHeight;
+        // var w = 1000,h=600;
         canvas.attr("width", w);  
         canvas.attr("height", h);
         centerPos = {x: w/2, y: h/2};
@@ -29,7 +30,7 @@ $(function(){
         for(var i = 0; i < count; i++) {
             var r = parseInt(radiusLimit * Math.random(), 10);
             // 去重
-            if(pointList.indexOf(r) != -1 || r < 10) {
+            if(pointList.indexOf(r) != -1 || r < 100) {
                 i--;
                 continue;
             }
@@ -50,7 +51,8 @@ $(function(){
 
             pointInfo.push(startInfo);
 
-            context.strokeStyle = 'rgba(0, 0, 0, ' + alpha + ')';
+            context.strokeStyle = 'rgba(0, 0, 0, ' + 0 + ')';
+            context.lineWidth = 2;
 
             context.moveTo(startInfo.x, startInfo.y);
 
@@ -80,15 +82,15 @@ $(function(){
         function draw(){
             context.clearRect(0, 0, canvas.width(), canvas.height());
 
-            count++;
-
+            count += 2;
+// context.lineWidth = 2;
             pointList.forEach(function(r, i){
 
                 context.beginPath();
 
                 var angle = status > 0 ? angleInfo[i].angle1 : angleInfo[i].angle2;
 
-                var endAngle = angle + Math.PI/360 + status * count * Math.PI/720; if(i ==0 ){console.log(endAngle)}
+                var endAngle = angle + Math.PI/360 + count * Math.PI/720;
 
                 context.strokeStyle = 'rgba(0, 0, 0, ' + pointInfo[i].alpha + ')';
 
@@ -100,7 +102,13 @@ $(function(){
 
                 animateAngle[i] = {angle1: endAngle, angle2: angleInfo[i].angle1};
             });
+            
             animateHandler = requestAnimationFrame(draw);
+
+            if(status < 0 && animateAngle[0].angle1 - animateAngle[0].angle2 > -0.01){
+                context.clearRect(0, 0, canvas.width(), canvas.height());
+                cancelAnimationFrame(animateHandler)
+            }
         }
         draw();
     }
