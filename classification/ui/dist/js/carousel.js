@@ -19,16 +19,18 @@ define(function (require, exports, module) {
             preNavCls: '',
             triggerCls: ''
         },
-
-        propsInAttrs: ['element', 'testAttrs'],
+        propsInAttrs: ['testAttrs'],
         initialize: function initialize(config) {
             Carousel.superclass.initialize.call(this, config);
-            console.log(this.attrs);
-            // console.log(this.element)
+            // console.log(this.attrs);
+        },
+        initProps: function initProps() {
+            console.log(this.get('trigger'));
         }
     });
     new Carousel({
-        panelCls: '.scroll'
+        // template: '<div class="aaa"></div>',
+        element: '.scroll'
     });
     return Carousel;
 });

@@ -21,12 +21,14 @@ define(function(require, exports, module){
         initialize: function(config) {
             Carousel.superclass.initialize.call(this, config);
             // console.log(this.attrs);
-            console.log(this.element);
+        },
+        initProps: function(){
+            console.log(this.get('trigger'));
         }
     });
     new Carousel({
         // template: '<div class="aaa"></div>',
-        panelCls: '.scroll'
+        element: '.scroll'
     });
     return Carousel;
 })

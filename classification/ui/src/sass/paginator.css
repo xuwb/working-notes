@@ -1,0 +1,90 @@
+.clearfix:after{content:'';display:block;clear:both;}
+.fn-FS12{font-size:12px;}
+
+.pagination{display:inline-block;padding-left:0;margin:20px 0;border-radius:4px;}
+.pagination > li{display:inline;}
+.pagination > li > a, .pagination > li > span{position:relative;float:left;padding:6px 12px;margin-left:-1px;line-height:1.42857143;color:#337ab7;text-decoration:none;background-color:#fff;border:1px solid #ddd;}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span{margin-left:0;border-top-left-radius:4px;border-bottom-left-radius:4px;}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span{border-top-right-radius:4px;border-bottom-right-radius:4px;}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus{color:#23527c;background-color:#eee;border-color:#ddd;}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus{z-index:2;color:#fff;cursor:default;background-color:#337ab7;border-color:#337ab7;}
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus{color:#777;cursor:not-allowed;background-color:#fff;border-color:#ddd;}
+.pagination-lg > li > a,
+.pagination-lg > li > span{padding:10px 16px;font-size:18px;}
+.pagination-lg > li:first-child > a,
+.pagination-lg > li:first-child > span{border-top-left-radius:6px;border-bottom-left-radius:6px;}
+.pagination-lg > li:last-child > a,
+.pagination-lg > li:last-child > span{border-top-right-radius:6px;border-bottom-right-radius:6px;}
+.pagination-sm > li > a,
+.pagination-sm > li > span{padding:5px 10px;font-size:12px;}
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:first-child > span{border-top-left-radius:3px;border-bottom-left-radius:3px;}
+.pagination-sm > li:last-child > a,
+.pagination-sm > li:last-child > span{border-top-right-radius:3px;border-bottom-right-radius:3px;}
+.pagination > li.other > a:hover,
+.pagination > li.other > a:focus{background:none;cursor:default;}
+.paginator .form-control{height:34px;width:28px !important;margin:0 5px;padding:0 10px;font-size:12px;line-height:34px;border-radius:3px;border:1px solid #ddd;color:#666;}
+.paginator .form-group-sm{line-height:30px;}
+.paginator .btn{display:inline-block;text-align:center;line-height:30px;font-size:12px;color:#FFF;background:#047dc6;border:none;border-radius:3px;cursor:pointer;padding:0 10px;}
+.paginator .btn:active{background:#036099}
+.paginator .page-size{width:80px;height:36px;border-color:#ddd;border-radius:3px;}
+
+
+
+/* .pagination{display:inline-block;padding-left:0;margin:20px 0;}
+.pagination > li{display:inline;}
+.pagination > li > a, .pagination > li > span{position:relative;float:left;min-width:32px;height:32px;text-align:center;line-height:32px;color:#999;text-decoration:none;background-color:#fff;}
+.pagination > .page-prev > a,
+.pagination > .page-prev > span,
+.pagination > .page-next > a,
+.pagination > .page-next > span{margin-left:0;height:30px;background:#f1f1f1;border:solid #d5d5d5 1px;}
+.pagination > .page-prev > a:hover,
+.pagination > .page-next > a:hover{background:#effcff;border:solid #88c3eb 1px;color:#0e92e4;}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus{background-color:#f1f1f1;}
+.pagination > li.other > a:hover,
+.pagination > li.other > a:focus{background:none;cursor:default;}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus{z-index:2;color:#007ec1;background:none;cursor:default;}
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus{color:#777;cursor:not-allowed;background-color:#f1f1f1;border-color:#d5d5d5;}
+.pagination-lg > li > a,
+.pagination-lg > li > span{padding:10px 16px;font-size:18px;}
+.pagination-sm > li > a,
+.pagination-sm > li > span{padding:5px 10px;font-size:12px;}
+.paginator .form-control{height:30px;width:28px !important;margin:0 5px;padding:0 10px;font-size:12px;line-height:30px;border:1px solid #d5d5d5;color:#666;}
+.paginator .form-group-sm{height:32px;line-height:32px;}
+.paginator .btn{display:inline-block;text-align:center;line-height:30px;font-size:12px;color:#FFF;background:#047dc6;border:none;cursor:pointer;padding:0 10px;}
+.paginator .btn:active{color:#005b97;}
+.paginator .page-size{width:80px;height:32px;border-color:#ccc;}
+.paginator .origin-select .ch-showtext,
+.paginator .origin-select .ch-list,
+.paginator .lassen .kuma-scroller-track,
+.paginator .lassen .kuma-scroller-bar{background:#f1f1f1;cursor:pointer;}
+.paginator .origin-select .ch-showtext{border-color:#d5d5d5;}
+.paginator .origin-select .ch-showtext:after{border-top-color:#777;} */
