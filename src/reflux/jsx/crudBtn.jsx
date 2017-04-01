@@ -4,7 +4,7 @@
 define(function(require, exports, module) {
 
     var React = require('react');
-    var ConnectAction = require('actions/connect_actions');
+    var ConnectAction = require('../actions/connect_actions');
 
     var CrudBtn = React.createClass({
         getInitialState: function(){

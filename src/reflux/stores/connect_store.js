@@ -2,8 +2,8 @@
 
 define(function(require, exports, module) {
     var Reflux      = require('reflux'),
-        ConnectActions = require('actions/connect_actions'),
-        Utils       = require('common/util');
+        ConnectActions = require('../actions/connect_actions'),
+        Utils       = require('../common/util');
 
     return Reflux.createStore({
         listenables: [ConnectActions],

@@ -9,7 +9,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 define(function (require, exports) {
 
-	var limit = require('common/limit');
+	var limit = require('../common/limit');
 
 	var WIN = window;
 

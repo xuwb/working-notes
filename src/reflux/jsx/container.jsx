@@ -9,11 +9,11 @@ define(function(require, exports, module) {
 
         // 测试connect用，与项目无关
     var Reflux        = require('reflux'),
-        ConnectAction = require('actions/connect_actions'),
-        ConnectStore  = require('stores/connect_store');
+        ConnectAction = require('../actions/connect_actions'),
+        ConnectStore  = require('../stores/connect_store');
 
     var Container = React.createClass({
-        mixins: [Reflux.connect(ConnectStore)],  // 测试connect用，与项目无关
+        // mixins: [Reflux.connect(ConnectStore)],  // 测试connect用，与项目无关
 
         getInitialState: function(){
             // this.props.outerFunc.call(this);

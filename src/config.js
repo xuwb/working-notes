@@ -6,7 +6,13 @@
             'jquery': 'ui/js/widget/jquery',
             'handlebars': '/libs/handlebars-v4.0.5',
             'Base': 'ui/js/widget/base',
-            'Widget': 'ui/js/widget/widget'
+            'Widget': 'ui/js/widget/widget',
+
+            // relux
+            'react'   : '/libs/react',
+            'reactDom': '/libs/react-dom',
+            'reflux'  : '/libs/reflux',
+            'promise' : 'reflux/common/promise'
 		},
 		debug: true,
 		charset: 'utf-8',

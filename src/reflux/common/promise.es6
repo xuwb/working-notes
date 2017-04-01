@@ -4,7 +4,7 @@
  */
 define(function(require, exports) {
 
-	var limit = require('common/limit');
+	var limit = require('../common/limit');
 
 	var WIN = window;
 

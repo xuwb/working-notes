@@ -3,16 +3,16 @@
     <head>
         <title>react增删改</title>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="src/css/index.css">
-        <script src="src/build/jquery-1.11.2.js"></script>
-        <script src="src/build/sea.js"></script>
-        <script src="src/config.js"></script>
+        <link rel="stylesheet" type="text/css" href="/dist/reflux/css/index.css">
+        <script src="/libs/jquery.js"></script>
+        <script src="/libs/sea.js"></script>
+        <script src="/dist/config.min.js"></script>
     </head>
     <body>
         <button>在外面修改react内部</button>
         <div id="main"></div>
         <script>
-            seajs.use('init');
+            seajs.use('reflux/main');
         </script>
     </body>
 </html>

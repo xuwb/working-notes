@@ -3,7 +3,7 @@
 define(function(require) {
     var React     = require('react'),
         ReactDOM  = require('reactDom'),
-        Containter = require('jsx/container');
+        Containter = require('./jsx/container');
 
     // var widget = {};
     // function outerFunc(){

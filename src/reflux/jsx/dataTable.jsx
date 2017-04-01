@@ -8,8 +8,8 @@ define(function(require, exports, module){
     var CrudBtn   = require('./crudBtn'),
         DataRow   = require('./dataRow');
 
-    var CrudStore = require('stores/crud_store'),
-        CrudActions = require('actions/crud_actions');
+    var CrudStore = require('../stores/crud_store'),
+        CrudActions = require('../actions/crud_actions');
 
     var DataTable = React.createClass({
         // mixins: [Reflux.connect(CrudStore, 'data')],           // 直接修改this.state.data

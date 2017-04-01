@@ -3,7 +3,7 @@
 define(function(require, exports, module) {
     var Reflux      = require('reflux'),
         CrudActions = require('../actions/crud_actions'),
-        Utils       = require('common/util');
+        Utils       = require('../common/util');
 
     var CrudStore = Reflux.createStore({
         listenables: [CrudActions],
@@ -13,7 +13,7 @@ define(function(require, exports, module) {
         },
         onFetch: function() {
             var self = this;
-            Utils.fetch('src/data.json')
+            Utils.fetch('/src/reflux/data.json')
                 .then(function(data) {
                     self.trigger({
                         type:  'init',
